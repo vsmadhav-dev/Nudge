@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-heading: 'Geist', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+
+    --bg-surface: #C1B4AE;
+    --card-bg: #D1C7C1;
+    --card-hover: #D9D0CB;
+
+    --text-main: #353238;
+    --text-muted: #5E5B63;
+    --text-heading: #92140C;
+
+    --accent-primary: #BE5A38;
+    --accent-secondary: #BE7C4D;
+}
+
+body {
+    background-color: var(--bg-surface);
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Header Section */
+.app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.heading {
+    color: var(--text-heading);
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.heading-description {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+}
+
+/* Form & Input */
+.todo-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 0.85rem 1.2rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.todo-input::placeholder {
+    color: var(--text-muted);
+}
+
+.todo-input:focus {
+    border-color: var(--accent-primary);
+    background-color: #E0D7D2;
+}
+
+.btn-add {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+    opacity: 0.9;
+}
+
+.btn-add:active {
+    transform: scale(0.98);
+}
+
+/* List & Cards */
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.todo-card {
+    background-color: var(--card-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-left: 5px solid transparent;
+    transition: background-color 0.2s ease;
+}
+
+.todo-card:hover {
+    background-color: var(--card-hover);
+}
+
+.todo-card.priority-high {
+    border-left-color: var(--text-heading);
+}
+
+.todo-card.priority-medium {
+    border-left-color: var(--accent-secondary);
+}
+
+.todo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+}
+
+.todo-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.todo-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+.todo-time {
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Tags */
+.tag {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.tag-high {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+}
+
+.tag-medium {
+    background-color: var(--accent-secondary);
+    color: #FFFFFF;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.custom-checkbox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: transparent;
+    border: 2px solid var(--text-main);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: var(--accent-primary);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Completed State Styling */
+.todo-card.completed {
+    opacity: 0.6;
+}
+
+.todo-card.completed .todo-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
