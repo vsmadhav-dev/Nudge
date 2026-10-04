@@ -323,3 +323,46 @@ body {
     color: var(--text-main);
     padding: 0.5rem;
 }
+.todo-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-icon .material-symbols-outlined {
+    font-size: 1.2rem;
+}
+
+
+.btn-ai:hover {
+    color: var(--accent-primary);
+    background-color: rgba(190, 90, 56, 0.12);
+}
+
+.btn-ai:active {
+    transform: scale(0.95);
+}
+
+
+.btn-delete:hover {
+    color: var(--text-heading);
+    background-color: rgba(146, 20, 12, 0.12);
+}
+
+.btn-delete:active {
+    transform: scale(0.95);
+}
