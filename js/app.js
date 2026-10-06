@@ -1,7 +1,8 @@
 let time = document.querySelector("#time");
 let form1 = document.querySelector('#todoForm')
 let form2 = document.querySelector('.todo-form2');
-
+let input1 =  document.querySelector('.todo-input');
+let input2 = document.querySelector('#taskName')
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -24,6 +25,7 @@ function init() {
 }
 form1.addEventListener('submit', (evt) => {
     evt.preventDefault();
+    input2.value = input1.value;
     form1.classList.add('hide');
     form2.classList.remove('hide');
 })
