@@ -384,3 +384,71 @@ body {
 .btn-delete:active {
     transform: scale(0.95);
 }
+.hide{
+    display: none !important;
+}
+.todo-form2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.todo-form2 .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.todo-form2 label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+}
+
+.todo-form2 .todo-input,
+.todo-form2 .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #b8aea8;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-heading);
+    background-color: #ffffff;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.todo-form2 .todo-input:focus,
+.todo-form2 .form-select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(190, 90, 56, 0.2);
+}
+
+.todo-form2 .btn-add {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    align-self: flex-start;
+}
+
+.todo-form2 .btn-add:hover {
+    background-color: var(--text-heading);
+}
+
+.todo-form2 .btn-add:active {
+    transform: scale(0.98);
+}

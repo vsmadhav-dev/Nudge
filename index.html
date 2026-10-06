@@ -40,6 +40,43 @@
         >
         <button type="submit" class="btn-add">Add Task</button>
     </form>
+    <form class="todo-form2 hide" id="addTaskForm">
+
+        <div class="form-group">
+            <label for="taskName">Task Name</label>
+            <input
+                    type="text"
+                    id="taskName"
+                    class="todo-input"
+                    placeholder="Enter task name..."
+                    required
+            >
+        </div>
+
+        <!-- Priority Selector -->
+        <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" class="form-select">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+
+        <!-- Label / Tag Input -->
+        <div class="form-group">
+            <label for="taskTag">Label</label>
+            <input
+                    type="text"
+                    id="taskTag"
+                    class="todo-input"
+                    placeholder="e.g., Work, Personal, Urgent"
+            >
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-add">Add Task</button>
+    </form>
     <div class="filter">
         <div class="filter-input">
 <p class="filter-task">Filter Tasks By</p>
