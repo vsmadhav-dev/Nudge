@@ -8,7 +8,25 @@ let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
 
-function addTaskInUi(name , piorityValue , labelValue , timeTocomplete , timeCreated){
+function fetchTask(fallbackFunction) {
+    let alltasks = JSON.parse(localStorage.getItem('taskData')) || [];
+
+    for (let task of alltasks) {
+
+        let taskName = task.taskName;
+        let taskPiority = task.taskPiority;
+        let taskCreated = task.taskCreated;
+        let labelValue = task.label;
+        let timeComplete = task.timeComplete;
+
+
+        if (typeof fallbackFunction === 'function') {
+            fallbackFunction(taskName, taskPiority, labelValue, timeComplete, taskCreated);
+        }
+    }
+}
+
+function addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated){
     let li = document.createElement('li');
     li.classList.add('todo-card');
     let priorityClass = piorityValue === 'high' ? 'priority-high' : piorityValue === 'medium' ? 'priority-medium' : '';
@@ -64,7 +82,9 @@ function Isuser() {
 function init() {
     let timetodisplay = new Date().toLocaleString();
     time.innerText = timetodisplay;
-}
+}document.addEventListener('DOMContentLoaded', ()=> {
+    fetchTask(addTaskInUi)
+})
 form1.addEventListener('submit', (evt) => {
     evt.preventDefault();
     input2.value = input1.value;
