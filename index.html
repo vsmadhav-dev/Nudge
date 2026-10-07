@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-   <link rel="icon" type="image/svg+xml" href="Assets/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="Assets/logo.svg" />
 </head>
 <body>
 
@@ -14,15 +14,14 @@
     <header class="app-header">
         <div class="app-header__content">
             <div class="app-header__logo">
-            <div class="heading-container">
-        <h1 class="heading">Nudge</h1>
-
+                <div class="heading-container">
+                    <h1 class="heading">Nudge</h1>
+                </div>
+                <div class="img-container">
+                    <img class="img" src="Assets/logo.svg" alt="Nudge">
+                </div>
             </div>
-            <div class="img-container">
-                <img class="img" src="Assets/logo.svg" alt="Nudge">
-            </div>
-            </div>
-        <p class="heading-description">A Todo List App which helps you track your everyday tasks</p>
+            <p class="heading-description">A Todo List App which helps you track your everyday tasks</p>
         </div>
 
         <div class="time-container">
@@ -41,8 +40,9 @@
         >
         <button type="submit" class="btn-add">Add Task</button>
     </form>
-    <form class="todo-form2 hide" id="addTaskForm">
 
+
+    <form class="todo-form2 hide" id="addTaskForm">
         <div class="form-group">
             <label for="taskName">Task Name</label>
             <input
@@ -54,7 +54,7 @@
             >
         </div>
 
-        <!-- Priority Selector -->
+
         <div class="form-group">
             <label for="taskPriority">Priority</label>
             <select id="taskPriority" class="form-select">
@@ -64,26 +64,36 @@
             </select>
         </div>
 
-        <!-- Label / Tag Input -->
-        <div class="form-group">
+
+        <div class="form-group ">
             <label for="taskTag">Label</label>
             <input
                     type="text"
                     id="taskTag"
-                    class="todo-input"
+                    class="todo-input "
                     placeholder="e.g., Work, Personal, Urgent"
             >
         </div>
 
-        <!-- Submit Button -->
+
+        <div class="form-group">
+            <label for="completionTime">When will it be completed?</label>
+            <input
+                    type="time"
+                    id="completionTime"
+                    class="todo-input time-input"
+                    required
+            >
+        </div>
+
+
         <button type="submit" class="btn-add">Add Task</button>
     </form>
+
     <div class="filter">
         <div class="filter-input">
-<p class="filter-task">Filter Tasks By</p>
-            <span class="material-symbols-outlined">
-filter_list
-</span>
+            <p class="filter-task">Filter Tasks By</p>
+            <span class="material-symbols-outlined">filter_list</span>
         </div>
 
         <select class="filter-select">
@@ -91,11 +101,10 @@ filter_list
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
         </select>
-
     </div>
 
-    <ul id="todoList" class="todo-list">
 
+    <ul id="todoList" class="todo-list">
         <li class="todo-card priority-high">
             <label class="custom-checkbox">
                 <input type="checkbox">
@@ -109,18 +118,14 @@ filter_list
                 </div>
             </div>
             <div class="todo-actions">
-
                 <button type="button" class="btn-icon btn-ai" title="Get AI Suggestions">
                     <span class="material-symbols-outlined">auto_awesome</span>
                 </button>
-
-
                 <button type="button" class="btn-icon btn-delete" title="Delete Task">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
             </div>
         </li>
-
 
         <li class="todo-card priority-medium">
             <label class="custom-checkbox">
@@ -135,18 +140,14 @@ filter_list
                 </div>
             </div>
             <div class="todo-actions">
-
                 <button type="button" class="btn-icon btn-ai" title="Get AI Suggestions">
                     <span class="material-symbols-outlined">auto_awesome</span>
                 </button>
-
-
                 <button type="button" class="btn-icon btn-delete" title="Delete Task">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
             </div>
         </li>
-
 
         <li class="todo-card completed">
             <label class="custom-checkbox">
@@ -160,12 +161,9 @@ filter_list
                 </div>
             </div>
             <div class="todo-actions">
-
                 <button type="button" class="btn-icon btn-ai" title="Get AI Suggestions">
                     <span class="material-symbols-outlined">auto_awesome</span>
                 </button>
-
-
                 <button type="button" class="btn-icon btn-delete" title="Delete Task">
                     <span class="material-symbols-outlined">delete</span>
                 </button>

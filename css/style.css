@@ -452,3 +452,27 @@ body {
 .todo-form2 .btn-add:active {
     transform: scale(0.98);
 }
+
+.todo-form2 .time-input {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+
+.todo-form2 .time-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(20%) sepia(10%) saturate(1000%) hue-rotate(220deg);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.todo-form2 .time-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.todo-form2 .time-input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(190, 90, 56, 0.2);
+}
