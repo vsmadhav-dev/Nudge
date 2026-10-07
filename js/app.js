@@ -117,7 +117,10 @@ form2.addEventListener('submit', (evt) => {
     console.log(name);
 
 
-
+form1.reset();
+form2.reset();
+form2.classList.add('hide');
+form1.classList.remove('hide');
 })
 
 
