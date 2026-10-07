@@ -8,61 +8,10 @@ let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
 
-function fetchTask(fallbackFunction) {
-    let alltasks = JSON.parse(localStorage.getItem('taskData')) || [];
+import {pushItem} from "./modules/pushitem.js";
+import {addTaskInUi} from "./modules/addtaskinui.js";
+import {fetchTask} from "./modules/fetchtaskfromui.js";
 
-    for (let task of alltasks) {
-
-        let taskName = task.taskName;
-        let taskPiority = task.taskPiority;
-        let taskCreated = task.taskCreated;
-        let labelValue = task.label;
-        let timeComplete = task.timeComplete;
-
-
-        if (typeof fallbackFunction === 'function') {
-            fallbackFunction(taskName, taskPiority, labelValue, timeComplete, taskCreated);
-        }
-    }
-}
-
-function addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated){
-    let li = document.createElement('li');
-    li.classList.add('todo-card');
-    let priorityClass = piorityValue === 'high' ? 'priority-high' : piorityValue === 'medium' ? 'priority-medium' : '';
-    li.className = `todo-card ${priorityClass}`;
-
-    li.innerHTML = `
-        <label class="custom-checkbox">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-        </label>
-        <div class="todo-content">
-            <span class="todo-title">${name}</span>
-            <div class="todo-meta">
-                ${labelValue ? `<span class="tag ${piorityValue === 'high' ? 'tag-high' : 'tag-medium'}">${labelValue}</span>` : ''}
-                <span class="todo-time">${timetocomplete || timeCreated}</span>
-            </div>
-        </div>
-        <div class="todo-actions">
-            <button type="button" class="btn-icon btn-ai" title="Get AI Suggestions">
-                <span class="material-symbols-outlined">auto_awesome</span>
-            </button>
-            <button type="button" class="btn-icon btn-delete" title="Delete Task">
-                <span class="material-symbols-outlined">delete</span>
-            </button>
-        </div>
-    `;
-
-    todoList.prepend(li);
-}
-
-function pushItem(item) {
-    let taskData = JSON.parse(localStorage.getItem('taskData')) || [];
-     taskData.push(item);
-     localStorage.setItem('taskData', JSON.stringify(taskData));
-     return true;
-}
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -82,7 +31,8 @@ function Isuser() {
 function init() {
     let timetodisplay = new Date().toLocaleString();
     time.innerText = timetodisplay;
-}document.addEventListener('DOMContentLoaded', ()=> {
+}
+document.addEventListener('DOMContentLoaded', ()=> {
     fetchTask(addTaskInUi)
 })
 form1.addEventListener('submit', (evt) => {
