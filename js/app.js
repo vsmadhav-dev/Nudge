@@ -8,6 +8,37 @@ let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
 
+function addTaskInUi(name , piorityValue , labelValue , timeTocomplete , timeCreated){
+    let li = document.createElement('li');
+    li.classList.add('todo-card');
+    let priorityClass = piorityValue === 'high' ? 'priority-high' : piorityValue === 'medium' ? 'priority-medium' : '';
+    li.className = `todo-card ${priorityClass}`;
+
+    li.innerHTML = `
+        <label class="custom-checkbox">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <div class="todo-content">
+            <span class="todo-title">${name}</span>
+            <div class="todo-meta">
+                ${labelValue ? `<span class="tag ${piorityValue === 'high' ? 'tag-high' : 'tag-medium'}">${labelValue}</span>` : ''}
+                <span class="todo-time">${timetocomplete || timeCreated}</span>
+            </div>
+        </div>
+        <div class="todo-actions">
+            <button type="button" class="btn-icon btn-ai" title="Get AI Suggestions">
+                <span class="material-symbols-outlined">auto_awesome</span>
+            </button>
+            <button type="button" class="btn-icon btn-delete" title="Delete Task">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+    `;
+
+    todoList.prepend(li);
+}
+
 function pushItem(item) {
     let taskData = JSON.parse(localStorage.getItem('taskData')) || [];
      taskData.push(item);
@@ -57,7 +88,7 @@ form2.addEventListener('submit', (evt) => {
     };
 
     pushItem(taskDetails);
-
+ addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated);
  console.log(taskDetails);
     console.log(timetocomplete);
     console.log(piorityValue);
@@ -65,9 +96,7 @@ form2.addEventListener('submit', (evt) => {
     console.log(timeCreated);
     console.log(name);
 
-    let li = document.createElement('li');
-    li.classList.add('todo-card');
-    todoList.appendChild(li);
+
 
 })
 
