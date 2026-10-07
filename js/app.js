@@ -4,7 +4,9 @@ let form2 = document.querySelector('.todo-form2');
 let input1 =  document.querySelector('.todo-input');
 let input2 = document.querySelector('#taskName');
 let todoList = document.querySelector('#todoList');
-
+let piority = document.querySelector('#taskPriority');
+let label = document.querySelector('#taskTag');
+let timeTocomplete = document.querySelector('#completionTime');
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
@@ -32,6 +34,18 @@ form1.addEventListener('submit', (evt) => {
 });
 form2.addEventListener('submit', (evt) => {
     evt.preventDefault();
+    let name = input2.value.trim();
+    let timeCreated = new Date().toLocaleString();
+    let piorityValue = piority.value;
+    let labelValue = label.value.trim();
+    let timetocomplete = timeTocomplete.value;
+
+    console.log(timetocomplete);
+    console.log(piorityValue);
+    console.log(labelValue);
+    console.log(timeCreated);
+    console.log(name);
+
     let li = document.createElement('li');
     li.classList.add('todo-card');
     todoList.appendChild(li);
