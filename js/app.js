@@ -7,6 +7,14 @@ let todoList = document.querySelector('#todoList');
 let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
+
+function pushItem(item) {
+    let taskData = JSON.parse(localStorage.getItem('taskData')) || [];
+     taskData.push(item);
+     localStorage.setItem('taskData', JSON.stringify(taskData));
+     return true;
+}
+
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
@@ -40,6 +48,17 @@ form2.addEventListener('submit', (evt) => {
     let labelValue = label.value.trim();
     let timetocomplete = timeTocomplete.value;
 
+    let taskDetails = {
+        taskName: name,
+        taskPiority: piorityValue,
+        taskCreated: timeCreated,
+        label: labelValue,
+        timeComplete: timetocomplete
+    };
+
+    pushItem(taskDetails);
+
+ console.log(taskDetails);
     console.log(timetocomplete);
     console.log(piorityValue);
     console.log(labelValue);
@@ -51,5 +70,7 @@ form2.addEventListener('submit', (evt) => {
     todoList.appendChild(li);
 
 })
+
+
 Isuser();
 setInterval(init, 1000);
