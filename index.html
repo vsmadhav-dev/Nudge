@@ -96,11 +96,25 @@
             <span class="material-symbols-outlined">filter_list</span>
         </div>
 
-        <select class="filter-select">
-            <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="uncompleted">Uncompleted</option>
-        </select>
+        <div class="filter-controls">
+            <select class="filter-select" id="filterType">
+                <option value="">Select Filter</option>
+                <option value="priority">By Priority</option>
+                <option value="completion">By Completion</option>
+            </select>
+
+            <select class="filter-select hide" id="priorityFilter">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <select class="filter-select hide" id="completionFilter">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+            </select>
+        </div>
     </div>
 
 
