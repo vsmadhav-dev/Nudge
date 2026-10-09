@@ -76,3 +76,20 @@ form1.classList.remove('hide');
 
 Isuser();
 setInterval(init, 1000);
+
+
+// ---- Filter dropdowns: show/hide based on "Filter By" choice ----
+let filterType = document.querySelector('#filterType');
+let priorityFilter = document.querySelector('#priorityFilter');
+let completionFilter = document.querySelector('#completionFilter');
+
+filterType.addEventListener('change', () => {
+    priorityFilter.classList.add('hide');
+    completionFilter.classList.add('hide');
+
+    if (filterType.value === 'priority') {
+        priorityFilter.classList.remove('hide');
+    } else if (filterType.value === 'completion') {
+        completionFilter.classList.remove('hide');
+    }
+});
