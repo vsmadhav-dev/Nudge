@@ -7,7 +7,7 @@ let todoList = document.querySelector('#todoList');
 let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
-
+let deletebtns = document.querySelectorAll('.btn-delete');
 let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
@@ -94,3 +94,10 @@ filterType.addEventListener('change', () => {
         completionFilter.classList.remove('hide');
     }
 });
+deletebtns.forEach((btn) => {
+    btn.addEventListener('click' , (evt)=> {
+    let card = evt.target.closest('.todo-card');
+    let taskName = card.querySelector('.todo-title');
+    deleteTask(taskName);
+    });
+})
