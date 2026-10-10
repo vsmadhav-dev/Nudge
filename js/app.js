@@ -8,6 +8,10 @@ let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
 
+let filterType = document.querySelector('#filterType');
+let priorityFilter = document.querySelector('#priorityFilter');
+let completionFilter = document.querySelector('#completionFilter');
+
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
@@ -78,10 +82,7 @@ Isuser();
 setInterval(init, 1000);
 
 
-// ---- Filter dropdowns: show/hide based on "Filter By" choice ----
-let filterType = document.querySelector('#filterType');
-let priorityFilter = document.querySelector('#priorityFilter');
-let completionFilter = document.querySelector('#completionFilter');
+
 
 filterType.addEventListener('change', () => {
     priorityFilter.classList.add('hide');
