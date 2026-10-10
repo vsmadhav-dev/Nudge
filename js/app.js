@@ -16,8 +16,9 @@ import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
 import{deleteTask} from "./modules/deleteTask.js";
-
-
+import {updateCheckboxStatus} from "./modules/updateCheckBoxStatus.js"
+//Global Variable
+let isChecked
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
@@ -105,10 +106,23 @@ todoList.addEventListener('click' , (e)=> {
         card.remove();
     }
 });
-checkbox.forEach(check => {
-    check.addEventListener('change' , (event)=> {
-        const isChecked = event.target.checked;
-        console.log('Change in state')
-        updateCheckBoxStatus(isChecked);
-    })
-})
+
+
+todoList.addEventListener('change', (e) => {
+    let checkbox = e.target.closest('.task-checkbox');
+    if (checkbox) {
+        let card = checkbox.closest('.todo-card');
+        let taskName = card.querySelector('.todo-title').textContent.trim();
+        let isChecked = checkbox.checked;
+
+
+        if (isChecked) {
+            card.classList.add('completed');
+        } else {
+            card.classList.remove('completed');
+        }
+
+
+        updateCheckboxStatus(taskName, isChecked);
+    }
+});
