@@ -65,7 +65,7 @@ form2.addEventListener('submit', (evt) => {
     };
 
     pushItem(taskDetails);
- addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated);
+ addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated , false);
  console.log(taskDetails);
     console.log(timetocomplete);
     console.log(piorityValue);

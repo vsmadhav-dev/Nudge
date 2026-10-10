@@ -1,13 +1,13 @@
-export function addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated){
+export function addTaskInUi(name, piorityValue, labelValue, timetocomplete, timeCreated, isChecked = false) {
     let li = document.createElement('li');
-    li.classList.add('todo-card');
     let priorityClass = piorityValue === 'high' ? 'priority-high' : piorityValue === 'medium' ? 'priority-medium' : '';
     let completedClass = isChecked ? 'completed' : '';
     li.className = `todo-card ${priorityClass} ${completedClass}`;
 
     li.innerHTML = `
         <label class="custom-checkbox">
-            <input type="checkbox">
+            <!-- Added class="task-checkbox" and checked attribute -->
+            <input type="checkbox" class="task-checkbox" ${isChecked ? 'checked' : ''}>
             <span class="checkmark"></span>
         </label>
         <div class="todo-content">
