@@ -15,6 +15,7 @@ let completionFilter = document.querySelector('#completionFilter');
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
+import{deleteTask} from "./modules/deleteTask.js";
 
 
 function Isuser() {
@@ -94,10 +95,12 @@ filterType.addEventListener('change', () => {
         completionFilter.classList.remove('hide');
     }
 });
-deletebtns.forEach((btn) => {
-    btn.addEventListener('click' , (evt)=> {
-    let card = evt.target.closest('.todo-card');
-    let taskName = card.querySelector('.todo-title');
-    deleteTask(taskName);
-    });
-})
+todoList.addEventListener('click' , (e)=> {
+   let deleteBtn = e.target.closest('.btn-delete');
+    if(deleteBtn){
+        let card = e.target.closest('.todo-card');
+        let taskName = card.querySelector('.todo-title').textContent.trim();
+        deleteTask(taskName);
+        card.remove();
+    }
+});
