@@ -7,10 +7,10 @@ let todoList = document.querySelector('#todoList');
 let piority = document.querySelector('#taskPriority');
 let label = document.querySelector('#taskTag');
 let timeTocomplete = document.querySelector('#completionTime');
-let deletebtns = document.querySelectorAll('.btn-delete');
 let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
+let checkbox = document.querySelectorAll('input[type="checkbox"]')
 
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
@@ -59,7 +59,8 @@ form2.addEventListener('submit', (evt) => {
         taskPiority: piorityValue,
         taskCreated: timeCreated,
         label: labelValue,
-        timeComplete: timetocomplete
+        timeComplete: timetocomplete,
+        checked: false
     };
 
     pushItem(taskDetails);
@@ -104,3 +105,10 @@ todoList.addEventListener('click' , (e)=> {
         card.remove();
     }
 });
+checkbox.forEach(check => {
+    check.addEventListener('change' , (event)=> {
+        const isChecked = event.target.checked;
+        console.log('Change in state')
+        updateCheckBoxStatus(isChecked);
+    })
+})
