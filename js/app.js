@@ -15,8 +15,9 @@ let goButton = document.querySelector('.btn-go');
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
-import{deleteTask} from "./modules/deleteTask.js";
+import {deleteTask} from "./modules/deleteTask.js";
 import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
+import {pushTaskByPriority} from "./modules/pushTaskByPriority.js";
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -64,6 +65,11 @@ form2.addEventListener('submit', (evt) => {
     };
 
     pushItem(taskDetails);
+    let pushedTask = pushTaskByPriority(taskDetails);
+    if (pushedTask){
+        console.log('All set task by priority pushed');
+    }
+
  addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated , false);
  console.log(taskDetails);
     console.log(timetocomplete);
