@@ -18,6 +18,7 @@ import {fetchTask} from "./modules/fetchtaskfromui.js";
 import {deleteTask} from "./modules/deleteTask.js";
 import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
 import {pushTaskByPriority} from "./modules/pushTaskByPriority.js";
+import {fetchTaskByPriority} from "./modules/fetchTaskByPriority.js";
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -86,8 +87,6 @@ form1.classList.remove('hide');
 })
 
 
-Isuser();
-setInterval(init, 1000);
 
 
 
@@ -132,3 +131,15 @@ todoList.addEventListener('change', (e) => {
         updateCheckboxStatus(taskName, isChecked);
     }
 });
+
+goButton.addEventListener('click' , ()=> {
+    if (priorityFilter.value){
+       let statement = fetchTaskByPriority(priorityFilter.value.toLowerCase());
+    if (statement){
+        console.log('Successful in fetching tasks by priority');
+    }
+    }
+})
+
+Isuser();
+setInterval(init, 1000);
