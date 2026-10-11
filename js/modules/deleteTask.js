@@ -1,7 +1,7 @@
 export function deleteTask(task){
     let taskData = JSON.parse(localStorage.getItem('taskData'));
     for(let i of taskData){
-        if(i['taskName'].toLowerCase() == task.trim()){
+        if(i['taskName'].trim() == task.trim()){
             let indexToDelete = taskData.indexOf(i);
             taskData.splice(indexToDelete , 1);
         }
