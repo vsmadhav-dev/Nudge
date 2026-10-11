@@ -16,7 +16,7 @@ import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
 import{deleteTask} from "./modules/deleteTask.js";
-import {updateCheckboxStatus} from "./modules/updateCheckBoxStatus.js"
+import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
 //Global Variable
 let isChecked
 function Isuser() {
