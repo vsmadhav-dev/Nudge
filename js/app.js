@@ -10,15 +10,14 @@ let timeTocomplete = document.querySelector('#completionTime');
 let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
-let checkbox = document.querySelectorAll('input[type="checkbox"]')
+let goButton = document.querySelector('.btn-go');
 
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
 import{deleteTask} from "./modules/deleteTask.js";
 import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
-//Global Variable
-let isChecked
+
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
@@ -90,6 +89,7 @@ setInterval(init, 1000);
 filterType.addEventListener('change', () => {
     priorityFilter.classList.add('hide');
     completionFilter.classList.add('hide');
+    goButton.classList.remove('hide');
 
     if (filterType.value === 'priority') {
         priorityFilter.classList.remove('hide');
