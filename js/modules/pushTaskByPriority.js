@@ -2,9 +2,9 @@ import {addTaskInUi} from "./addtaskinui.js";
 
 export function pushTaskByPriority(taskDetails) {
     let priorityToFetch = taskDetails['taskPiority'];
-    let tasks = JSON.parse(localStorage.getItem(`${priorityToFetch}task`)) || [];
+    let tasks = JSON.parse(localStorage.getItem(`priority-${priorityToFetch}task`)) || [];
     tasks.push(taskDetails);
-    localStorage.setItem(`${priorityToFetch}task`, JSON.stringify(tasks));
+    localStorage.setItem(`priority-${priorityToFetch}task`, JSON.stringify(tasks));
     // for (let task of tasks) {
     //     let taskName = task.taskName;
     //     let taskPiority = task.taskPiority;

@@ -19,6 +19,7 @@ import {deleteTask} from "./modules/deleteTask.js";
 import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
 import {pushTaskByPriority} from "./modules/pushTaskByPriority.js";
 import {fetchTaskByPriority} from "./modules/fetchTaskByPriority.js";
+import {deleteTaskByPriority} from "./modules/deleteTaskByPriority.js";
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -107,7 +108,11 @@ todoList.addEventListener('click' , (e)=> {
     if(deleteBtn){
         let card = e.target.closest('.todo-card');
         let taskName = card.querySelector('.todo-title').textContent.trim();
+        let priorityClass = Array.from(card.classList).find(
+            className => className !== 'todo-card'
+        )
         deleteTask(taskName);
+        deleteTaskByPriority(taskName , priorityClass);
         card.remove();
     }
 });
