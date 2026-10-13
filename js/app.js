@@ -11,7 +11,7 @@ let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
 let goButton = document.querySelector('.btn-go');
-let taskNameFromUi = document.querySelectorAll('.todo-title')
+
 
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
@@ -144,6 +144,11 @@ goButton.addEventListener('click' , ()=> {
     if (statement){
         console.log('Successful in fetching tasks by priority');
     }
+    }else if (priorityFilter.value.toLowerCase() == 'completed'){
+        let statement = fetchCompletedTasks();
+        if (statement){
+            console.log('Success in fetching completed tasks');
+        }
     }
 })
 
