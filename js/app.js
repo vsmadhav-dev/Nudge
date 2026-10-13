@@ -11,6 +11,7 @@ let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
 let goButton = document.querySelector('.btn-go');
+let taskNameFromUi = document.querySelectorAll('.todo-title')
 
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
