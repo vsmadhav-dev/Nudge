@@ -21,6 +21,7 @@ import {updateCheckboxStatus} from "./modules/updateCheckboxStatus.js"
 import {pushTaskByPriority} from "./modules/pushTaskByPriority.js";
 import {fetchTaskByPriority} from "./modules/fetchTaskByPriority.js";
 import {deleteTaskByPriority} from "./modules/deleteTaskByPriority.js";
+import {fetchCompletedTasks} from "./modules/fetchCompletedTasks.js";
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -138,24 +139,26 @@ todoList.addEventListener('change', (e) => {
     }
 });
 
-goButton.addEventListener('click' , ()=> {
-    if (priorityFilter.value){
-       let statement = fetchTaskByPriority(priorityFilter.value.toLowerCase());
-    if (statement){
-        console.log('Successful in fetching tasks by priority');
-    }
-    }else if (priorityFilter.value.toLowerCase() == 'completed'){
-        let statement = fetchCompletedTasks();
-        if (statement){
-            console.log('Success in fetching completed tasks');
-        }
-    }else if(priorityFilter.value.toLowerCase() == 'all'){
-        let statement = fetchTask(addTaskInUi);
-        if (statement){
-            console.log('Success iykyk')
-        }
-    }
-})
+   goButton.addEventListener('click', () => {
+    todoList.innerHTML = '';   
 
+    if (filterType.value === 'priority') {
+        const p = priorityFilter.value;          
+        if (p === 'all') {
+            fetchTask(addTaskInUi);
+        } else {
+            fetchTaskByPriority(p);
+        }
+    } else if (filterType.value === 'completion') {
+        const c = completionFilter.value;        // all | completed | uncompleted
+        if (c === 'completed') {
+            fetchCompletedTasks(addTaskInUi, true);
+        } else if (c === 'uncompleted') {
+            fetchCompletedTasks(addTaskInUi, false);
+        } else {
+            fetchTask(addTaskInUi);
+        }
+    }
+});
 Isuser();
 setInterval(init, 1000);
