@@ -144,10 +144,15 @@ goButton.addEventListener('click' , ()=> {
     if (statement){
         console.log('Successful in fetching tasks by priority');
     }
-    }else if (priorityFilter.value.toLowerCase() == 'completed'){
+    }else if (completionFilter.value.toLowerCase() == 'completed'){
         let statement = fetchCompletedTasks();
         if (statement){
             console.log('Success in fetching completed tasks');
+        }
+    }else if(completionFilter.value.toLowerCase() == 'all'){
+        let statement = fetchTask(addTaskInUi);
+        if (statement){
+            console.log('Success iykyk')
         }
     }
 })
