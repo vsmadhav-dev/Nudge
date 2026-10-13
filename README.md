@@ -138,7 +138,7 @@ Nudge/
 | 2 | Add a task and save it to `localStorage` | ✅ Done |
 | 3 | Load saved tasks from `localStorage` on page open | ✅ Done |
 | 4 | Delete a task and sync the removal with `localStorage` | ✅ Done |
-| 5 | Filter tasks by priority and by completed/uncompleted | ⏳ Planned (UI built) |
+| 5 | Filter tasks by priority and by completed/uncompleted | ⏳ In progress |
 | 6 | AI task suggestions (Gemini API) | ⏳ Planned |
 
 After v1: edit tasks, label filtering, task dates, and a dark/light mode toggle based on the system preference.
