@@ -22,6 +22,7 @@ import {pushTaskByPriority} from "./modules/pushTaskByPriority.js";
 import {fetchTaskByPriority} from "./modules/fetchTaskByPriority.js";
 import {deleteTaskByPriority} from "./modules/deleteTaskByPriority.js";
 import {fetchCompletedTasks} from "./modules/fetchCompletedTasks.js";
+import { updateCheckboxStatusByPriority} from "./modules/updateCheckboxStatusByPriority.js"
 
 function Isuser() {
     let name = prompt("Enter your name to continue");
@@ -136,7 +137,15 @@ todoList.addEventListener('change', (e) => {
 
 
         updateCheckboxStatus(taskName, isChecked);
+
+       let TRUE = updateCheckboxStatusByPriority(taskName , isChecked);
+    if (TRUE){
+        console.log('Success in updating priority checklist')
+    }else{
+        console.log('Error');
     }
+    }
+
 });
 
    goButton.addEventListener('click', () => {
