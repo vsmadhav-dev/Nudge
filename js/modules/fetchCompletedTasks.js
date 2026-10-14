@@ -1,18 +1,14 @@
 import {addTaskInUi} from "./addtaskinui.js";
 
-export function fetchCompletedTasks() {
-    let allTasks = JSON.parse(localStorage.getItem('taskData'));
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i]['checked'] == 'true') {
-            let taskName = allTasks[i].taskName;
-            let taskPiority = allTasks[i].taskPiority;
-            let taskCreated = allTasks[i].taskCreated;
-            let labelValue = allTasks[i].label;
-            let timeComplete = allTasks[i].timeComplete;
-            let isChecked = allTasks[i].checked;
-        todoList.innerHTML = '';
-        addTaskInUi(taskName, taskPiority, labelValue, timeComplete, taskCreated, isChecked);
-        }
+export function fetchCompletedTasks(callback, wantCompleted) {
+    const allTasks = JSON.parse(localStorage.getItem('taskData')) || [];
+    const todoList = document.querySelector('#todoList');
+    todoList.innerHTML = '';
 
+    for (const task of allTasks) {
+        if (!!task.checked === wantCompleted) {
+            callback(task.taskName, task.taskPiority, task.label,
+                     task.timeComplete, task.taskCreated, task.checked);
+        }
     }
 }
