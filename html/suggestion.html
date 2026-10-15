@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/suggestions.css">
+    <link rel="icon" type="image/svg+xml" href="../Assets/logo.svg">
+</head>
+<body>
+
+<main class="screen">
+
+    <!-- Top bar -->
+    <header class="topbar">
+        <a class="back" href="../index.html" aria-label="Back"></a>
+        <span class="line w-40"></span>
+    </header>
+
+    <!-- Task summary -->
+    <section class="task">
+        <span class="pill"></span>
+        <span class="line line--xl w-90"></span>
+        <span class="line line--xl w-60"></span>
+        <div class="row">
+            <span class="tag"></span>
+            <span class="dot"></span>
+            <span class="line w-20"></span>
+        </div>
+    </section>
+
+    <!-- Conversation -->
+    <section class="thread">
+
+        <!-- User message -->
+        <div class="bubble bubble--user">
+            <span class="line line--light w-30"></span>
+            <span class="line line--light w-100"></span>
+            <span class="line line--light w-70"></span>
+        </div>
+
+        <!-- AI reply -->
+        <div class="bubble bubble--ai">
+            <div class="row">
+                <span class="dot dot--accent"></span>
+                <span class="line w-25"></span>
+            </div>
+
+            <span class="line line--lg w-90"></span>
+            <span class="line line--lg w-55"></span>
+
+            <div class="steps">
+                <div class="step" style="--minutes: 8">
+                    <span class="num"></span>
+                    <span class="line w-70"></span>
+                    <span class="line w-15 push"></span>
+                </div>
+                <div class="step" style="--minutes: 5">
+                    <span class="num"></span>
+                    <span class="line w-60"></span>
+                    <span class="line w-15 push"></span>
+                </div>
+                <div class="step" style="--minutes: 10">
+                    <span class="num"></span>
+                    <span class="line w-65"></span>
+                    <span class="line w-15 push"></span>
+                </div>
+                <div class="step" style="--minutes: 7">
+                    <span class="num"></span>
+                    <span class="line w-50"></span>
+                    <span class="line w-15 push"></span>
+                </div>
+            </div>
+
+            <div class="tip">
+                <span class="dot dot--amber"></span>
+                <div class="tip__lines">
+                    <span class="line w-100"></span>
+                    <span class="line w-60"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="button" class="btn btn--primary" aria-label="Primary action"><span class="line line--light w-100"></span></button>
+                <button type="button" class="btn btn--ghost" aria-label="Secondary action"><span class="line w-100"></span></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ask form -->
+    <form class="ask" onsubmit="return false">
+        <span class="line line--lg w-50"></span>
+
+        <div class="row">
+            <span class="chip"></span>
+            <span class="chip chip--wide"></span>
+            <span class="chip"></span>
+        </div>
+
+        <textarea class="ask__input" rows="3" aria-label="Note"></textarea>
+
+        <button type="submit" class="btn btn--primary btn--wide" aria-label="Submit"></button>
+    </form>
+
+</main>
+
+</body>
+</html>
