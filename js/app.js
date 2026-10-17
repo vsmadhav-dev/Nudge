@@ -120,7 +120,16 @@ todoList.addEventListener('click' , (e)=> {
     }
 });
 
+todoList.addEventListener('click' , (evt)=> {
+   let aiSuggestionBtn = evt.target.closest('.btn-ai');
+   if (aiSuggestionBtn) {
+       console.log('Ai Suggestion Button selected!', aiSuggestionBtn);
+       let card = evt.target.closest('.todo-card');
 
+       let taskName = card.querySelector('.todo-title').textContent;
+       console.log('AI suggestion requested for ' , taskName);
+   }
+});
 todoList.addEventListener('change', (e) => {
     let checkbox = e.target.closest('.task-checkbox');
     if (checkbox) {
