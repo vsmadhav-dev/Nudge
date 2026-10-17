@@ -24,6 +24,7 @@ import {deleteTaskByPriority} from "./modules/deleteTaskByPriority.js";
 import {fetchCompletedTasks} from "./modules/fetchCompletedTasks.js";
 import { updateCheckboxStatusByPriority} from "./modules/updateCheckboxStatusByPriority.js"
 
+
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
@@ -128,6 +129,8 @@ todoList.addEventListener('click' , (evt)=> {
 
        let taskName = card.querySelector('.todo-title').textContent;
        console.log('AI suggestion requested for ' , taskName);
+       window.location.href = `html/suggestion.html?task=${encodeURIComponent(taskName.trim())}`;
+       localStorage.setItem('selectedTask' , taskName);
    }
 });
 todoList.addEventListener('change', (e) => {
