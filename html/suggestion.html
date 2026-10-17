@@ -2,107 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>AI Suggestions · Nudge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/suggestions.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" href="../css/suggestion.css">
     <link rel="icon" type="image/svg+xml" href="../Assets/logo.svg">
 </head>
 <body>
 
-<main class="screen">
+<div class="screen">
 
-    <!-- Top bar -->
+    <!-- Top: back button + task name -->
     <header class="topbar">
-        <a class="back" href="../index.html" aria-label="Back"></a>
-        <span class="line w-40"></span>
+        <a class="topbar__back" href="../index.html" aria-label="Back to tasks">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h1 class="topbar__task">Finalize Q3 Marketing Report</h1>
     </header>
 
-    <!-- Task summary -->
-    <section class="task">
-        <span class="pill"></span>
-        <span class="line line--xl w-90"></span>
-        <span class="line line--xl w-60"></span>
-        <div class="row">
-            <span class="tag"></span>
-            <span class="dot"></span>
-            <span class="line w-20"></span>
-        </div>
-    </section>
+    <!-- Middle: scrolling conversation area -->
+    <main class="chat">
 
-    <!-- Conversation -->
-    <section class="thread">
-
-        <!-- User message -->
-        <div class="bubble bubble--user">
-            <span class="line line--light w-30"></span>
-            <span class="line line--light w-100"></span>
-            <span class="line line--light w-70"></span>
+        <!-- Humanness: small friendly tag above the message -->
+        <div class="presence">
+            <span class="presence__avatar">
+                <span class="material-symbols-outlined">auto_awesome</span>
+            </span>
+            <span class="presence__name">Nudge</span>
+            <span class="presence__status">here to help</span>
         </div>
 
-        <!-- AI reply -->
-        <div class="bubble bubble--ai">
-            <div class="row">
-                <span class="dot dot--accent"></span>
-                <span class="line w-25"></span>
-            </div>
+        <!-- AI message -->
+        <article class="message" aria-labelledby="ai-approach">
+            <p class="message__approach" id="ai-approach">
+                Write the summary last, after the numbers are locked in.
+            </p>
 
-            <span class="line line--lg w-90"></span>
-            <span class="line line--lg w-55"></span>
+            <ol class="steps">
+                <li class="step" style="--minutes: 8">
+                    <span class="step__text">Check the final figures against the data sheet</span>
+                    <span class="step__time">8 min</span>
+                </li>
+                <li class="step" style="--minutes: 5">
+                    <span class="step__text">List the 3 biggest results from the quarter</span>
+                    <span class="step__time">5 min</span>
+                </li>
+                <li class="step" style="--minutes: 10">
+                    <span class="step__text">Draft the summary from those 3 points</span>
+                    <span class="step__time">10 min</span>
+                </li>
+                <li class="step" style="--minutes: 7">
+                    <span class="step__text">Proofread once and export</span>
+                    <span class="step__time">7 min</span>
+                </li>
+            </ol>
 
-            <div class="steps">
-                <div class="step" style="--minutes: 8">
-                    <span class="num"></span>
-                    <span class="line w-70"></span>
-                    <span class="line w-15 push"></span>
-                </div>
-                <div class="step" style="--minutes: 5">
-                    <span class="num"></span>
-                    <span class="line w-60"></span>
-                    <span class="line w-15 push"></span>
-                </div>
-                <div class="step" style="--minutes: 10">
-                    <span class="num"></span>
-                    <span class="line w-65"></span>
-                    <span class="line w-15 push"></span>
-                </div>
-                <div class="step" style="--minutes: 7">
-                    <span class="num"></span>
-                    <span class="line w-50"></span>
-                    <span class="line w-15 push"></span>
-                </div>
-            </div>
+            <p class="message__tip">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span>If you stall on a sentence, write it badly and move on. Fix it in the last step.</span>
+            </p>
+        </article>
 
-            <div class="tip">
-                <span class="dot dot--amber"></span>
-                <div class="tip__lines">
-                    <span class="line w-100"></span>
-                    <span class="line w-60"></span>
-                </div>
-            </div>
+    </main>
 
-            <div class="row">
-                <button type="button" class="btn btn--primary" aria-label="Primary action"><span class="line line--light w-100"></span></button>
-                <button type="button" class="btn btn--ghost" aria-label="Secondary action"><span class="line w-100"></span></button>
-            </div>
-        </div>
-    </section>
+    <!-- Bottom: quick questions + custom input -->
+    <footer class="dock">
 
-    <!-- Ask form -->
-    <form class="ask" onsubmit="return false">
-        <span class="line line--lg w-50"></span>
-
-        <div class="row">
-            <span class="chip"></span>
-            <span class="chip chip--wide"></span>
-            <span class="chip"></span>
+        <div class="quick" role="group" aria-label="Quick questions">
+            <button type="button" class="quick__btn">I'm stuck</button>
+            <button type="button" class="quick__btn">Break it down</button>
+            <button type="button" class="quick__btn">Only 30 min</button>
         </div>
 
-        <textarea class="ask__input" rows="3" aria-label="Note"></textarea>
+        <form class="composer" id="askForm">
+            <label class="sr-only" for="userNote">Ask Nudge something</label>
+            <input
+                    type="text"
+                    id="userNote"
+                    class="composer__input"
+                    placeholder="Ask anything about this task..."
+                    autocomplete="off">
+            <button type="submit" class="composer__send" aria-label="Send">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </form>
 
-        <button type="submit" class="btn btn--primary btn--wide" aria-label="Submit"></button>
-    </form>
+    </footer>
 
-</main>
+</div>
 
 </body>
 </html>
