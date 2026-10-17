@@ -318,3 +318,16 @@ body {
     .quick__btn { font-size: 0.8rem; padding-inline: 0.25rem; }
     .message__approach { font-size: 1.15rem; }
 }
+.message__text { white-space: pre-line; }
+
+.message + .message { margin-top: 0.75rem; }
+
+.message--user {
+    width: fit-content;
+    max-width: 85%;
+    margin-left: auto;
+    border-left: 0;
+    border-radius: 14px 6px 14px 14px;
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+}
