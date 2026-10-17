@@ -24,10 +24,6 @@ import {deleteTaskByPriority} from "./modules/deleteTaskByPriority.js";
 import {fetchCompletedTasks} from "./modules/fetchCompletedTasks.js";
 import { updateCheckboxStatusByPriority} from "./modules/updateCheckboxStatusByPriority.js"
 
-const API = Config.API_KEY;
-if (API){
-    console.log('API key fetched')
-}
 function Isuser() {
     let name = prompt("Enter your name to continue");
     while (!name){
