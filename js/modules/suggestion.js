@@ -5,8 +5,19 @@ let userNote = document.querySelector('#userNote');
 let askForm = document.querySelector('#askForm');
 let quickButtons = document.querySelectorAll('.quick__btn');
 
-const taskName = localStorage.getItem('selectedTask') || 'this task';
+import {getAPIkey} from "./getAPi.js";
 
+const taskName = localStorage.getItem('selectedTask') || 'this task';
+const API = localStorage.getItem('userAPIkey');
+
+if (!API){
+let DATA = getAPIkey();
+if (DATA){
+    console.log('API key fetched successfully');
+}else{
+    console.log('Problem in fetching API key');
+}
+}
 const prompts = {
     "I'm stuck": `I'm stuck on "${taskName}". Can you help me get unstuck?`,
     "Break it down": `Can you break "${taskName}" down into smaller steps?`,

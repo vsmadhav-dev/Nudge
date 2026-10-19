@@ -1,8 +1,3 @@
-const API = Config.API;
-if (API){
-    console.log("API found");
-}
-
 let time = document.querySelector("#time");
 let form1 = document.querySelector('#todoForm')
 let form2 = document.querySelector('.todo-form2');
