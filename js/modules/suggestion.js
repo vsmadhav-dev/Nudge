@@ -4,21 +4,24 @@ let chat = document.querySelector('.chat');
 let userNote = document.querySelector('#userNote');
 let askForm = document.querySelector('#askForm');
 let quickButtons = document.querySelectorAll('.quick__btn');
-let submitButton = document.querySelector('.composer__send')
+let submitButton = document.querySelector('.composer__send');
 
-import {getAPIkey} from "./getAPi.js";
+import { getAPIkey } from "./getAPi.js";
+import { fetchSuggestion } from "./SendRespnseRequest.js";
+
 
 const taskName = localStorage.getItem('selectedTask') || 'this task';
 const API = localStorage.getItem('userAPIkey');
 
-if (!API){
-let DATA = getAPIkey();
-if (DATA){
-    console.log('API key fetched successfully');
-}else{
-    console.log('Problem in fetching API key');
+if (!API) {
+    let DATA = getAPIkey();
+    if (DATA) {
+        console.log('API key fetched successfully');
+    } else {
+        console.log('Problem in fetching API key');
+    }
 }
-}
+
 const prompts = {
     "I'm stuck": `I'm stuck on task "${taskName}". Can you help me get unstuck?`,
     "Break it down": `Can you break this task "${taskName}" down into smaller steps?`,
@@ -51,7 +54,6 @@ function sendPrompt(text) {
 
 showSuggestionScreen();
 
-
 quickButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
         const prompt = prompts[btn.textContent.trim()];
@@ -62,14 +64,14 @@ quickButtons.forEach((btn) => {
     });
 });
 
-
 askForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    const text = userNote.value.trim();
-    if (text) {
-        sendPrompt(text);
-       submitButton.disabled = true;
-        export  const text = userNote.value.trim();
+    const Text = userNote.value.trim();
+    if (Text) {
 
+        sendPrompt(Text);
+        submitButton.disabled = true;
+
+        fetchSuggestion(Text);
     }
 });
