@@ -4,6 +4,7 @@ let chat = document.querySelector('.chat');
 let userNote = document.querySelector('#userNote');
 let askForm = document.querySelector('#askForm');
 let quickButtons = document.querySelectorAll('.quick__btn');
+let submitButton = document.querySelector('.composer__send')
 
 import {getAPIkey} from "./getAPi.js";
 
@@ -19,9 +20,9 @@ if (DATA){
 }
 }
 const prompts = {
-    "I'm stuck": `I'm stuck on "${taskName}". Can you help me get unstuck?`,
-    "Break it down": `Can you break "${taskName}" down into smaller steps?`,
-    "Only 30 min": `I only have 30 minutes for "${taskName}". What should I do?`
+    "I'm stuck": `I'm stuck on task "${taskName}". Can you help me get unstuck?`,
+    "Break it down": `Can you break this task "${taskName}" down into smaller steps?`,
+    "Only 30 min": `I only have 30 minutes for my task "${taskName}". What should I do?`
 };
 
 function showSuggestionScreen() {
@@ -65,5 +66,10 @@ quickButtons.forEach((btn) => {
 askForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const text = userNote.value.trim();
-    if (text) sendPrompt(text);
+    if (text) {
+        sendPrompt(text);
+       submitButton.disabled = true;
+        export  const text = userNote.value.trim();
+
+    }
 });
