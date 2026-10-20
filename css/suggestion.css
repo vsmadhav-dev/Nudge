@@ -331,3 +331,27 @@ body {
     background-color: var(--accent-primary);
     color: #FFFFFF;
 }
+.change-api-key {
+    align-self: flex-end;
+    margin: 0.6rem 1rem 0;
+    padding: 0.4rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: var(--card-bg);
+    color: var(--text-heading);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.change-api-key:hover {
+    border-color: var(--accent-primary);
+    background-color: var(--card-hover);
+}
+
+.change-api-key:active {
+    transform: scale(0.97);
+}

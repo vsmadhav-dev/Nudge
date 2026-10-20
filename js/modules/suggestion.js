@@ -5,6 +5,7 @@ let userNote = document.querySelector('#userNote');
 let askForm = document.querySelector('#askForm');
 let quickButtons = document.querySelectorAll('.quick__btn');
 let submitButton = document.querySelector('.composer__send');
+let changeAPI = document.querySelector('.change-api-key');
 
 import { getAPIkey } from "./getAPi.js";
 import { fetchSuggestion } from "./SendRespnseRequest.js";
@@ -31,6 +32,14 @@ const prompts = {
 function showSuggestionScreen() {
     topbarTask.textContent = taskName;
     aiMessage?.remove();
+}
+function changeAPIkey(){
+    let userAPI = prompt('Enter your Gemini API Key');
+    while (!userAPI.trim()){
+        userAPI = prompt('Enter your Gemini API Key');
+    }
+     localStorage.setItem('userAPIkey' , userAPI);
+   return true;
 }
 
 function addUserMessage(text) {
@@ -67,11 +76,7 @@ function addAiMessage(text) {
     chat.scrollTop = chat.scrollHeight;
     submitButton.disabled = false;
 }
-function sendPrompt(text , aiReply) {
-    addUserMessage(text);
-    userNote.value = '';
 
-}
 
 showSuggestionScreen();
 
@@ -95,9 +100,11 @@ askForm.addEventListener('submit', async (evt) => {
  const aiReply = await fetchSuggestion(Text)
         addAiMessage(aiReply || 'error occurred');
 
-
-
-
-
+    }
+});
+changeAPI.addEventListener('click', (evt) =>
+{
+    if (changeAPIkey()){
+        console.log('API key change successfully')
     }
 });
