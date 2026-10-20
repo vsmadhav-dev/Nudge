@@ -28,7 +28,13 @@ const prompts = {
     "Break it down": `Can you break this task "${taskName}" down into smaller steps?`,
     "Only 30 min": `I only have 30 minutes for my task "${taskName}". What should I do?`
 };
-
+function saveMessage(role , reply){
+    const chat  = JSON.parse(localStorage.getItem(`${taskName}-ai-chat`)) || [];
+    chat.push({
+        role: reply
+    });
+    localStorage.setItem(`${taskName}-ai-chat` , JSON.stringify(chat));
+}
 function showSuggestionScreen() {
     topbarTask.textContent = taskName;
     aiMessage?.remove();
@@ -95,11 +101,12 @@ askForm.addEventListener('submit', async (evt) => {
     const Text = userNote.value.trim();
     if (Text) {
         addUserMessage(Text);
+        saveMessage('user', Text);
         userNote.value = '';
         submitButton.disabled = true;
  const aiReply = await fetchSuggestion(Text)
         addAiMessage(aiReply || 'error occurred');
-
+      saveMessage('ai' , aiReply);
     }
 });
 changeAPI.addEventListener('click', (evt) =>
