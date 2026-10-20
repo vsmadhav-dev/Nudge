@@ -46,10 +46,31 @@ function addUserMessage(text) {
     chat.scrollTop = chat.scrollHeight;
 }
 
-function sendPrompt(text) {
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function addAiMessage(text) {
+    const box = document.createElement('article');
+    box.className = 'message';
+
+    box.innerHTML = `
+        <p class="message__text">${escapeHtml(text)}</p>
+    `;
+
+    chat.appendChild(box);
+    chat.scrollTop = chat.scrollHeight;
+    submitButton.disabled = false;
+}
+function sendPrompt(text , aiReply) {
     addUserMessage(text);
     userNote.value = '';
-    // The AI reply will be added here later.
+
 }
 
 showSuggestionScreen();
@@ -64,14 +85,19 @@ quickButtons.forEach((btn) => {
     });
 });
 
-askForm.addEventListener('submit', (evt) => {
+askForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const Text = userNote.value.trim();
     if (Text) {
-
-        sendPrompt(Text);
+        addUserMessage(Text);
+        userNote.value = '';
         submitButton.disabled = true;
+ const aiReply = await fetchSuggestion(Text)
+        addAiMessage(aiReply || 'error occurred');
 
-        fetchSuggestion(Text);
+
+
+
+
     }
 });

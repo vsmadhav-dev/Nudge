@@ -16,10 +16,16 @@ export async function fetchSuggestion(userText) {
 
 
       const data = await response.json();
+      if (!response.ok || data.error) {
+          console.warn('API Error, using fallback data:', data.error || response.statusText);
+          return null;
+      }
       const rawtext =data.candidates[0].content.parts[0].text;
       const structure =JSON.parse(rawtext)
-   console.log(structure[0].answer)
+      return structure[0]?.answer ?? null;
   }catch (e) {
       console.log(e)
   }
+
+  return true;
 }
