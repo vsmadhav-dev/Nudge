@@ -29,10 +29,23 @@ const prompts = {
     "Only 30 min": `I only have 30 minutes for my task "${taskName}". What should I do?`
 };
 function saveMessage(role , reply){
-    const chat  = JSON.parse(localStorage.getItem(`${taskName}-ai-chat`)) || [];
-    chat.push({
-        role: reply
-    });
+    let chat  =  [];
+    try{
+        let storedData = localStorage.getItem(`${taskName}-ai-chat`);
+        chat = storedData ? JSON.parse(storedData) : [];
+    if (!Array.isArray(chat)) {
+        chat = [];
+    }
+        chat.push({
+            role: role ,
+            reply: reply
+        });
+    }
+    catch (er){
+        console.warn('Curropted data');
+        chat = [{role: role , reply: reply}];
+    }
+
     localStorage.setItem(`${taskName}-ai-chat` , JSON.stringify(chat));
 }
 function showSuggestionScreen() {
