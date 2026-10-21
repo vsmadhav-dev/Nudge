@@ -73,7 +73,20 @@ function addUserMessage(text) {
     chat.appendChild(box);
     chat.scrollTop = chat.scrollHeight;
 }
-
+function fetchAllAiSuggestion(){
+    let chatData = JSON.parse(localStorage.getItem(`${taskName}-ai-chat`));
+    if (chatData){
+        for (let msg of chatData){
+            if (msg.role == 'user'){
+                addUserMessage(msg.reply)
+            }else if (msg.role == 'ai'){
+                addAiMessage(msg.reply)
+            }
+        }
+    }else{
+        console.log('Nothing to fetch');
+    }
+}
 function escapeHtml(text) {
     return text
         .replace(/&/g, '&amp;')
@@ -96,7 +109,7 @@ function addAiMessage(text) {
     submitButton.disabled = false;
 }
 
-
+fetchAllAiSuggestion();
 showSuggestionScreen();
 
 quickButtons.forEach((btn) => {
@@ -128,3 +141,8 @@ changeAPI.addEventListener('click', (evt) =>
         console.log('API key change successfully')
     }
 });
+
+
+
+
+
