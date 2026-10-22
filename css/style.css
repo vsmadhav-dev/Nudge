@@ -252,6 +252,7 @@ body {
 
 .filter {
     display: flex;
+    flex-wrap: wrap;              /* lets the Reset button wrap on narrow screens */
     justify-content: space-between;
     align-items: center;
     background-color: var(--card-bg);
@@ -504,5 +505,48 @@ body {
 }
 
 .btn-go:active {
+    transform: scale(0.97);
+}
+
+/* ---------- Reset filters button ---------- */
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    border: 1.5px solid var(--text-muted);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reset .material-symbols-outlined {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+}
+
+.btn-reset:hover {
+    border-color: var(--accent-primary);
+    background-color: rgba(190, 90, 56, 0.12);
+}
+
+.btn-reset:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.btn-reset:active {
     transform: scale(0.97);
 }
