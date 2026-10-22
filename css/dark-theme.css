@@ -1,9 +1,6 @@
 
-
 :root {
     color-scheme: dark;
-
-
     --bg-surface: #1C1816;
     --card-bg: #272220;
     --card-hover: #322C29;
@@ -16,12 +13,11 @@
     --text-heading: #E8705F;
 
     /* Accents */
-    --accent-primary: #B5502D;     /* fills that carry white text */
-    --accent-hover: #9A4325;       /* hovered or pressed fills */
-    --accent-bright: #E0785A;      /* icons, borders and focus on dark */
-    --accent-secondary: #D49A6A;   /* medium priority */
-
-    --on-secondary: #1C1816;       /* text on the medium tag */
+    --accent-primary: #B5502D;
+    --accent-hover: #9A4325;
+    --accent-bright: #E0785A;
+    --accent-secondary: #D49A6A;
+    --on-secondary: #1C1816;
     --shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -30,7 +26,7 @@
     outline-offset: 2px;
 }
 
-/* ---------- Inputs and buttons ---------- */
+
 
 .todo-input:focus {
     border-color: var(--accent-bright);
@@ -90,6 +86,21 @@
 .filter-select:focus {
     border-color: var(--accent-bright);
     box-shadow: 0 0 0 3px rgba(224, 120, 90, 0.25);
+}
+
+/* ---------- Reset filters button ---------- */
+
+.btn-reset .material-symbols-outlined {
+    color: var(--accent-bright);
+}
+
+.btn-reset:hover {
+    border-color: var(--accent-bright);
+    background-color: rgba(224, 120, 90, 0.16);
+}
+
+.btn-reset:focus-visible {
+    outline: 3px solid var(--accent-bright);
 }
 
 /* ---------- Card icon buttons ---------- */

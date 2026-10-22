@@ -11,7 +11,7 @@ let filterType = document.querySelector('#filterType');
 let priorityFilter = document.querySelector('#priorityFilter');
 let completionFilter = document.querySelector('#completionFilter');
 let goButton = document.querySelector('.btn-go');
-
+let resetButton = document.querySelector('.btn-reset');
 
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
@@ -156,25 +156,28 @@ todoList.addEventListener('change', (e) => {
 });
 
    goButton.addEventListener('click', () => {
-    todoList.innerHTML = '';   
+       todoList.innerHTML = '';
 
-    if (filterType.value === 'priority') {
-        const p = priorityFilter.value;          
-        if (p === 'all') {
-            fetchTask(addTaskInUi);
-        } else {
-            fetchTaskByPriority(p);
-        }
-    } else if (filterType.value === 'completion') {
-        const c = completionFilter.value;        // all | completed | uncompleted
-        if (c === 'completed') {
-            fetchCompletedTasks(addTaskInUi, true);
-        } else if (c === 'uncompleted') {
-            fetchCompletedTasks(addTaskInUi, false);
-        } else {
-            fetchTask(addTaskInUi);
-        }
-    }
-});
+       if (filterType.value === 'priority') {
+           const p = priorityFilter.value;
+           if (p === 'all') {
+               fetchTask(addTaskInUi);
+           } else {
+               fetchTaskByPriority(p);
+           }
+       } else if (filterType.value === 'completion') {
+           const c = completionFilter.value;        // all | completed | uncompleted
+           if (c === 'completed') {
+               fetchCompletedTasks(addTaskInUi, true);
+           } else if (c === 'uncompleted') {
+               fetchCompletedTasks(addTaskInUi, false);
+           } else {
+               fetchTask(addTaskInUi);
+           }
+       }
+   })
+resetButton.addEventListener('click' , ()=> {
+    location.reload();
+})
 Isuser();
 setInterval(init, 1000);
