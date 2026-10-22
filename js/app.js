@@ -25,13 +25,9 @@ import {fetchCompletedTasks} from "./modules/fetchCompletedTasks.js";
 import { updateCheckboxStatusByPriority} from "./modules/updateCheckboxStatusByPriority.js"
 
 function Isuser() {
-    let name = prompt("Enter your name to continue");
-    while (!name){
-        name = prompt("Enter your name to continue");
-    }
-    let user = name.toLowerCase().trim();
-    if(localStorage.getItem('userName') == user){
-       console.log('Account Found!' ,user);
+    let name = localStorage.getItem('userName');
+   if(name){
+       console.log('Account Found!' ,name);
         return true;
     }else{
         window.location.href = "html/registrationForm.html";
