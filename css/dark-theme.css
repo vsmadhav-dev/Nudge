@@ -1,0 +1,160 @@
+
+
+:root {
+    color-scheme: dark;
+
+
+    --bg-surface: #1C1816;
+    --card-bg: #272220;
+    --card-hover: #322C29;
+    --input-bg: #171311;
+    --input-border: #3F3733;
+
+    /* Text */
+    --text-main: #ECE4DF;
+    --text-muted: #A89E98;
+    --text-heading: #E8705F;
+
+    /* Accents */
+    --accent-primary: #B5502D;     /* fills that carry white text */
+    --accent-hover: #9A4325;       /* hovered or pressed fills */
+    --accent-bright: #E0785A;      /* icons, borders and focus on dark */
+    --accent-secondary: #D49A6A;   /* medium priority */
+
+    --on-secondary: #1C1816;       /* text on the medium tag */
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent-bright);
+    outline-offset: 2px;
+}
+
+/* ---------- Inputs and buttons ---------- */
+
+.todo-input:focus {
+    border-color: var(--accent-bright);
+    background-color: var(--card-hover);
+}
+
+.btn-add:hover {
+    background-color: var(--accent-hover);
+    opacity: 1;
+}
+
+.btn-go:hover {
+    background-color: var(--accent-hover);
+    opacity: 1;
+}
+
+.todo-form2 .btn-add:hover {
+    background-color: var(--accent-hover);
+}
+
+/* ---------- Tags ---------- */
+
+.tag-medium {
+    color: var(--on-secondary);
+}
+
+/* ---------- Checkbox ---------- */
+
+.checkmark {
+    border-color: var(--text-muted);
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: var(--accent-bright);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    border-color: var(--accent-primary);
+}
+
+.custom-checkbox input:focus-visible ~ .checkmark {
+    outline: 3px solid var(--accent-bright);
+    outline-offset: 2px;
+}
+
+/* ---------- Filter bar ---------- */
+
+.filter-input .material-symbols-outlined {
+    color: var(--accent-bright);
+}
+
+.filter-select {
+    /* chevron colour is #ECE4DF */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ECE4DF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.filter-select:focus {
+    border-color: var(--accent-bright);
+    box-shadow: 0 0 0 3px rgba(224, 120, 90, 0.25);
+}
+
+/* ---------- Card icon buttons ---------- */
+
+.btn-ai:hover {
+    color: var(--accent-bright);
+    background-color: rgba(224, 120, 90, 0.16);
+}
+
+.btn-delete:hover {
+    color: var(--text-heading);
+    background-color: rgba(232, 112, 95, 0.16);
+}
+
+/* ---------- Add-task form ---------- */
+
+.todo-form2 {
+    box-shadow: var(--shadow);
+}
+
+.todo-form2 .todo-input,
+.todo-form2 .form-select {
+    border-color: var(--input-border);
+    background-color: var(--input-bg);
+}
+
+.todo-form2 .todo-input:focus,
+.todo-form2 .form-select:focus,
+.todo-form2 .time-input:focus {
+    border-color: var(--accent-bright);
+    box-shadow: 0 0 0 2px rgba(224, 120, 90, 0.25);
+}
+
+.todo-form2 .time-input {
+    background-color: var(--input-bg);
+}
+
+.todo-form2 .time-input::-webkit-calendar-picker-indicator {
+    filter: invert(85%);   /* light clock icon on the dark input */
+}
+
+/* ---------- Suggestions page (no effect on the home page) ---------- */
+
+.topbar,
+.dock {
+    border-color: rgba(236, 228, 223, 0.12);
+}
+
+.step:hover {
+    background-color: #3A3330;
+}
+
+.message__tip .material-symbols-outlined {
+    color: var(--accent-bright);
+}
+
+.composer:focus-within {
+    border-color: var(--accent-bright);
+    background-color: #332D2A;
+}
+
+.composer__send:hover {
+    background-color: var(--accent-hover);
+}
+
+.quick__btn:hover {
+    border-color: var(--accent-bright);
+}
