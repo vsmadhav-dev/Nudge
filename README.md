@@ -20,6 +20,7 @@ A minimalist, high-performance to-do and task tracker for the web. It keeps addi
 - **Check off tasks.** Ticking or unticking a box is saved to `localStorage`, so the state survives a reload and shows correctly in every filter.
 - **Delete tasks.** The delete icon removes the card and keeps `localStorage` in sync.
 - **Working filters.** Filter by priority (All, High, Medium, Low) or by completion (All, Completed, Uncompleted), then press **Go**.
+- **Reset filters.** The **Reset** button in the filter bar clears the active filter and shows every task again.
 - **AI suggestions screen.** The sparkle button on a task opens a chat-style page for that task:
   - the task name in the header, with a back button
   - three quick buttons (**I'm stuck**, **Break it down**, **Only 30 min**) that write a ready-made prompt into the input so you can edit it before sending
@@ -28,7 +29,7 @@ A minimalist, high-performance to-do and task tracker for the web. It keeps addi
   - AI text is escaped before it is drawn, so a reply can never inject HTML
 - **Chat history per task.** Messages are stored in `localStorage` under a key built from the task name, so each task keeps its own conversation.
 - **Bring your own key.** Your Gemini API key stays in your browser (`userAPIkey`) and is never committed to the repo. The suggestions page has a **Change API key** button.
-- **Custom theme.** Warm surface colours built on CSS variables (see [Design](#design)).
+- **Light and dark theme.** Warm surface colours built on CSS variables (see [Design](#design)). The dark theme switches on automatically when your device is set to dark mode, with no setting to change in the app.
 
 ### Planned after alpha
 
@@ -42,7 +43,6 @@ A minimalist, high-performance to-do and task tracker for the web. It keeps addi
 - Edit existing tasks
 - Filter by label
 - A date as well as a time to finish a task
-- Dark and light mode that follows the system setting
 - Turn a suggestion's steps into real tasks
 
 ---
@@ -75,7 +75,7 @@ Answers are requested as structured JSON and read with `JSON.parse`. A reply tha
 | Area | Technologies |
 | --- | --- |
 | Markup | Semantic HTML5 |
-| Styling | Plain CSS3: CSS variables, Flexbox |
+| Styling | Plain CSS3: CSS variables, Flexbox, `prefers-color-scheme` for dark mode |
 | Logic | Vanilla JavaScript (ES6+ modules, `async`/`await`) |
 | Storage | Web Storage API (`localStorage`) |
 | AI | Google Gemini API (task suggestions) |
@@ -159,6 +159,15 @@ Then right-click `index.html` and choose **Open with Live Server**. On the first
 
 **Gemini API key.** A key placed in client-side code is visible to anyone who opens DevTools. Never commit it. Each user pastes their own key, which stays in their browser, or calls go through a small proxy you control. Anyone who uses the same browser profile can read a saved key.
 
+**Dark theme.** `css/dark-theme.css` is an add-on, not a copy of `style.css`. It redefines the colour variables and overrides the few rules that had hard-coded colours. It is loaded after `style.css` with a media query, so browsers only apply it in dark mode:
+
+```html
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dark-theme.css" media="(prefers-color-scheme: dark)">
+```
+
+Load it after every other stylesheet on a page, or its values lose. Any page that should follow dark mode needs this link. When you add a new colour to `style.css`, add its dark value to `dark-theme.css` too.
+
 **Hosting.** The project works on GitHub Pages as is, since every path is relative.
 
 ---
@@ -172,6 +181,7 @@ Nudge/
 ├── css/
 │   ├── style.css                     Main application styles
 │   ├── form.css                      Registration and login form styles
+│   ├── dark-theme.css                Dark theme add-on, applied in dark mode only
 │   └── suggestion.css                AI suggestions screen styles
 ├── html/
 │   ├── registrationForm.html         User registration page
@@ -206,6 +216,7 @@ Nudge/
 - **Class names.** Blocks and elements use hyphenated names (`todo-card`, `todo-title`), with BEM-style `block__element` for header parts (`app-header__content`) and the suggestions screen (`topbar__task`, `quick__btn`, `composer__send`). Keep new classes consistent with the nearest existing ones.
 - **Semantic HTML first.** Use real `<button>`, `<label>`, `<ul>` and `<form>` elements before reaching for `div` plus a click handler, so keyboard and screen-reader support come for free.
 - **One job per module.** Each file in `js/modules/` does one small task, and `app.js` only wires them together.
+- **Dark theme in step.** A new colour in `style.css` gets a matching dark value in `dark-theme.css`.
 - **Never trust AI text.** Escape it before putting it in `innerHTML`, or use `textContent`.
 - **Touch targets.** Icon buttons and checkboxes are small today (about 22 to 32 px). Aim for 44 px on touch screens when polishing.
 - **Commit messages.** Use a short prefix such as `feat:` or `fix:`, then a one-line summary.
@@ -223,7 +234,7 @@ Nudge/
 | 5 | Filter tasks by priority and by completed/uncompleted | ✅ Done |
 | 6 | AI task suggestions (Gemini API) | ✅ Done |
 
-All milestones are done and the app is in alpha testing. After alpha: edit tasks, label filtering, task dates, and a dark/light mode toggle based on the system preference.
+All milestones are done and the app is in alpha testing. After alpha: edit tasks, label filtering, task dates, and a manual light/dark switch (the theme currently follows the system setting).
 
 ### Milestone details
 
@@ -252,6 +263,21 @@ All milestones are done and the app is in alpha testing. After alpha: edit tasks
 | `--accent-primary` | `#BE5A38` | Buttons, checked boxes, focus rings |
 | `--accent-secondary` | `#BE7C4D` | Medium priority border and tag |
 
+- **Dark theme:** the same warm identity on a deep umber background, with the rust accent kept. `css/dark-theme.css` redefines these variables:
+
+| Token | Light | Dark |
+| --- | --- | --- |
+| `--bg-surface` | `#C1B4AE` | `#1C1816` |
+| `--card-bg` | `#D1C7C1` | `#272220` |
+| `--card-hover` | `#D9D0CB` | `#322C29` |
+| `--text-main` | `#353238` | `#ECE4DF` |
+| `--text-muted` | `#5E5B63` | `#A89E98` |
+| `--text-heading` | `#92140C` | `#E8705F` |
+| `--accent-primary` | `#BE5A38` | `#B5502D` |
+| `--accent-secondary` | `#BE7C4D` | `#D49A6A` |
+
+  It also adds `--accent-hover`, `--accent-bright`, `--input-bg` and `--input-border`, and sets `color-scheme: dark` so the time picker, select menus and scrollbars match.
+
 - **Suggestions screen:** a three-part layout (header, scrolling chat, bottom dock). Your prompts appear as rust bubbles on the right and AI replies as cards on the left. The quick buttons are oval and the input is a pill with the send button inside its right end. It uses the same tokens as the rest of the app.
 
 ---
@@ -264,6 +290,8 @@ Nudge is in alpha. The features above are all built, and the focus now is findin
 - **Delete:** delete tasks of each priority and reload, then check that none come back in any filter.
 - **Suggestions screen:** try each quick button, a custom prompt, a very long task name, no internet, and a wrong or missing API key. Each should show a message, not a blank or broken page.
 - **Storage:** clear `localStorage` partly (for example, remove only `taskData`) and check that the page still loads.
+- **Reset filters:** apply a priority filter, then a completion filter, press **Reset**, and check that every task is back and the filter controls return to their defaults.
+- **Dark mode:** switch your device (or DevTools → Rendering → "Emulate CSS prefers-color-scheme") between light and dark. Check the task cards, the add-task form, the filter bar and the time picker in both.
 - **Devices:** test on a phone-sized screen and in more than one browser.
 
 When you find a bug, open a GitHub issue with the steps, the browser, and any error shown in the DevTools console.
