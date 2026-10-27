@@ -13,6 +13,7 @@ let completionFilter = document.querySelector('#completionFilter');
 let goButton = document.querySelector('.btn-go');
 let resetButton = document.querySelector('.btn-reset');
 
+
 import {pushItem} from "./modules/pushitem.js";
 import {addTaskInUi} from "./modules/addtaskinui.js";
 import {fetchTask} from "./modules/fetchtaskfromui.js";
@@ -55,13 +56,14 @@ form2.addEventListener('submit', (evt) => {
     let piorityValue = piority.value;
     let labelValue = label.value.trim();
     let timetocomplete = timeTocomplete.value;
-
+    let dueDate = document.querySelector('#dueDate').value;
     let taskDetails = {
         taskName: name,
         taskPiority: piorityValue,
         taskCreated: timeCreated,
         label: labelValue,
         timeComplete: timetocomplete,
+        dueDate: dueDate ,
         checked: false
     };
 
@@ -71,7 +73,7 @@ form2.addEventListener('submit', (evt) => {
         console.log('All set task by priority pushed');
     }
 
- addTaskInUi(name , piorityValue , labelValue , timetocomplete , timeCreated , false);
+    addTaskInUi(name, piorityValue, labelValue, timetocomplete, timeCreated, false, dueDate);;
  console.log(taskDetails);
     console.log(timetocomplete);
     console.log(piorityValue);
