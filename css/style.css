@@ -550,3 +550,14 @@ body {
 .btn-reset:active {
     transform: scale(0.97);
 }
+
+/* ---------- Due date on a task card ---------- */
+
+.todo-due {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-heading);
+}
