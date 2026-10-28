@@ -20,6 +20,11 @@
 
     --accent-primary: #BE5A38;
     --accent-secondary: #BE7C4D;
+
+    /* API key banner */
+    --banner-bg: #92140C;
+    --banner-text: #FFF4EF;
+    --banner-border: #BE5A38;
 }
 .time-container{
     display: flex;
@@ -27,20 +32,50 @@
     align-items: flex-end;
     justify-content: space-between;
 }
+
+/* Body is now a column so the banner can sit above the app at full width */
 body {
     background-color: var(--bg-surface);
     font-family: var(--font-heading);
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem 1rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 2rem;
 }
 
+/* ---------- API key banner (very top of the page) ---------- */
+
+.api-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
+    border-bottom: 3px solid var(--banner-border);
+    text-align: center;
+}
+
+.api-banner__icon {
+    flex-shrink: 0;
+    font-size: 1.3rem;
+}
+
+.api-banner__text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Side padding moved here from body so the banner can span the full width */
 .app-container {
     width: 100%;
-    max-width: 600px;
+    max-width: calc(600px + 2rem);
+    padding: 2rem 1rem 0;
 }
 
 
