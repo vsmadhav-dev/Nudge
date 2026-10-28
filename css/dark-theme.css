@@ -1,4 +1,3 @@
-
 :root {
     color-scheme: dark;
     --bg-surface: #1C1816;
@@ -19,6 +18,11 @@
     --accent-secondary: #D49A6A;
     --on-secondary: #1C1816;
     --shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+    /* API key banner */
+    --banner-bg: #3A1612;
+    --banner-text: #F8DDD5;
+    --banner-border: #E0785A;
 }
 
 :focus-visible {
@@ -26,7 +30,11 @@
     outline-offset: 2px;
 }
 
+/* ---------- API key banner ---------- */
 
+.api-banner__icon {
+    color: var(--accent-bright);
+}
 
 .todo-input:focus {
     border-color: var(--accent-bright);
