@@ -2,7 +2,7 @@
 
 A minimalist, high-performance to-do and task tracker for the web. It keeps adding, filtering and finishing tasks fast, and stores everything in your browser, so your tasks never leave your device. Optional AI suggestions (Google Gemini) give you a nudge on any task, and the app works fully without them.
 
-**Status:** alpha testing. All six roadmap milestones are complete: adding, saving, loading, deleting, checking off and filtering tasks, and the AI suggestions screen connected to Gemini. The app is now being tested end to end, so expect rough edges. See the [roadmap](#roadmap) and [Alpha testing](#alpha-testing).
+**Status:** production. All six roadmap milestones are complete: adding, saving, loading, deleting, checking off and filtering tasks, and the AI suggestions screen connected to Gemini. Testing is finished and Nudge is ready for everyday use. See the [roadmap](#roadmap).
 
 **Live demo:** [vsmadhav-dev.github.io/Nudge](https://vsmadhav-dev.github.io/Nudge)
 
@@ -31,7 +31,7 @@ A minimalist, high-performance to-do and task tracker for the web. It keeps addi
 - **Bring your own key.** Your Gemini API key stays in your browser (`userAPIkey`) and is never committed to the repo. The suggestions page has a **Change API key** button.
 - **Light and dark theme.** Warm surface colours built on CSS variables (see [Design](#design)). The dark theme switches on automatically when your device is set to dark mode, with no setting to change in the app.
 
-### Planned after alpha
+### Planned next
 
 - Show the saved chat history again when a task's suggestions page is reopened
 - Validate Gemini replies against an expected shape before using them
@@ -234,7 +234,7 @@ Nudge/
 | 5 | Filter tasks by priority and by completed/uncompleted | ✅ Done |
 | 6 | AI task suggestions (Gemini API) | ✅ Done |
 
-All milestones are done and the app is in alpha testing. After alpha: edit tasks, label filtering, task dates, and a manual light/dark switch (the theme currently follows the system setting).
+All milestones are done and Nudge is in production. Next: edit tasks, label filtering, task dates, and a manual light/dark switch (the theme currently follows the system setting).
 
 ### Milestone details
 
@@ -279,22 +279,6 @@ All milestones are done and the app is in alpha testing. After alpha: edit tasks
   It also adds `--accent-hover`, `--accent-bright`, `--input-bg` and `--input-border`, and sets `color-scheme: dark` so the time picker, select menus and scrollbars match.
 
 - **Suggestions screen:** a three-part layout (header, scrolling chat, bottom dock). Your prompts appear as rust bubbles on the right and AI replies as cards on the left. The quick buttons are oval and the input is a pill with the send button inside its right end. It uses the same tokens as the rest of the app.
-
----
-
-## Alpha testing
-
-Nudge is in alpha. The features above are all built, and the focus now is finding what breaks. Good places to test:
-
-- **Checkbox state:** tick and untick tasks, then use every filter and reload the page. The state should match everywhere.
-- **Delete:** delete tasks of each priority and reload, then check that none come back in any filter.
-- **Suggestions screen:** try each quick button, a custom prompt, a very long task name, no internet, and a wrong or missing API key. Each should show a message, not a blank or broken page.
-- **Storage:** clear `localStorage` partly (for example, remove only `taskData`) and check that the page still loads.
-- **Reset filters:** apply a priority filter, then a completion filter, press **Reset**, and check that every task is back and the filter controls return to their defaults.
-- **Dark mode:** switch your device (or DevTools → Rendering → "Emulate CSS prefers-color-scheme") between light and dark. Check the task cards, the add-task form, the filter bar and the time picker in both.
-- **Devices:** test on a phone-sized screen and in more than one browser.
-
-When you find a bug, open a GitHub issue with the steps, the browser, and any error shown in the DevTools console.
 
 ---
 
