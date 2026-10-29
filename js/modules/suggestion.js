@@ -54,8 +54,10 @@ function showSuggestionScreen() {
 }
 function changeAPIkey(){
     let userAPI = prompt('Enter your Gemini API Key');
-    while (!userAPI.trim()){
-        userAPI = prompt('Enter your Gemini API Key');
+    if(!userAPI.trim()){
+        localStorage.setItem('showApiBanner', 'true');
+        window.location.replace('../../index.html');
+
     }
      localStorage.setItem('userAPIkey' , userAPI);
    return true;

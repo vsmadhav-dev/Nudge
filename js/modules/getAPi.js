@@ -5,13 +5,12 @@ export function getAPIkey() {
         'Watch the tutorial or check the guide on how to generate your key: https://docs.gemini.com/rest-api/'
     );
 
-    while (!userAPI || userAPI.trim() === "") {
-        userAPI = prompt(
-            'A valid Gemini API key is required to use AI features.\n\n' +
-            'Please enter your key (Learn how to generate one here: https://docs.gemini.com/rest-api/):'
-        );
+    if(!userAPI || userAPI.trim() === "") {
+       window.location.replace('../index.html');
+        localStorage.setItem('showApiBanner', 'true');
+        return false;
     }
-
+    localStorage.removeItem('showApiBanner');
     userAPI = userAPI.trim();
     localStorage.setItem('userAPIkey', userAPI);
     return true;
